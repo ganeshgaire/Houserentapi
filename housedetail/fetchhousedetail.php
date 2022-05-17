@@ -1,0 +1,28 @@
+<?php
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+include "config.php";
+
+$sql = "SELECT * FROM housedetail";
+$result = mysqli_query($conn, $sql) or die("SQL Query Failed.");
+
+if(mysqli_num_rows($result) > 0 ){
+
+
+	$output = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	foreach ($output as $key => $house) {
+		$image=baseurl.'housedetail/images/'.$house['house_image'];
+		$output[$key]['house_image']=$image;
+
+	}
+	 echo json_encode($output);
+}else{
+
+ echo json_encode(array('message' => 'No Record Found.', 'status' => false));
+
+}
+
+
+?>

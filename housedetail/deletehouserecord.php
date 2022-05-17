@@ -14,11 +14,11 @@ $sql = "DELETE FROM housedetail WHERE id = {$house_id}";
 
 if(mysqli_query($conn, $sql)){
 	
-	echo json_encode(array('message' => 'Student Record Deleted.', 'status' => true));
+	echo json_encode(array('message' => 'House Record Deleted .', 'status' => true));
 
 }else{
 
- echo json_encode(array('message' => 'Student Record not Deleted.', 'status' => false));
+ echo json_encode(array('message' => 'House Record  not Deleted.', 'status' => false));
 
 } 
 

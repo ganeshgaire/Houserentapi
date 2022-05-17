@@ -14,6 +14,10 @@ $bedroom= $data['bedroom_no'];
 $bathroom= $data['bathroom_no'];
 $price= $data['price'];
 include "config.php";
+// echo "<img src='".base64_decode($image)."'>";return;
+$image_name = round(microtime(true) * 1000). ".png"; //Giving new name to image.
+
+$image_upload_dir =$_SERVER['DOCUMENT_ROOT'].'/houserentapi/housedetail/images/'.$image_name; //Set the path where we need to upload the image.
 $checkUser ="SELECT *from housedetail WHERE house_name ='$hname'";
 $checkQuery = mysqli_query($conn,$checkUser);
 
@@ -22,11 +26,15 @@ if(mysqli_num_rows($checkQuery)>0){
 	
 
 } else {
-	$insertQuery = "INSERT INTO housedetail(house_name,house_image,location,bedroom_no,bathroom_no,price) VALUES ('{$hname}', '{$image}', '{$location}','{$bedroom}','{$bathroom}','{$price}')";
+	$insertQuery = "INSERT INTO housedetail(house_name,house_image,location,bedroom_no,bathroom_no,price) VALUES ('{$hname}', '{$image_name}', '{$location}','{$bedroom}','{$bathroom}','{$price}')";
 $result = mysqli_query($conn, $insertQuery);
 
 
 if($result){
+
+
+    $flag = file_put_contents($image_upload_dir, base64_decode($image));
+	
 	echo json_encode(array('message' => 'Register Sucess', 'status' => 200));
 
 }else{

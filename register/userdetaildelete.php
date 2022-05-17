@@ -14,11 +14,11 @@ $sql = "DELETE FROM signup WHERE id = {$customer_id}";
 
 if(mysqli_query($conn, $sql)){
 	
-	echo json_encode(array('message' => 'Student Record Deleted.', 'status' => true));
+	echo json_encode(array('message' => 'Customer Record Deleted.', 'status' => true));
 
 }else{
 
- echo json_encode(array('message' => 'Student Record not Deleted.', 'status' => false));
+ echo json_encode(array('message' => 'Customer Record not Deleted.', 'status' => false));
 
 } 
 
