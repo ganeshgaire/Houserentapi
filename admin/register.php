@@ -13,7 +13,7 @@ $phonenumber=$data['phone_number'];
 $email = $data['email'];
 $password= $data['password'];
 include "config.php";
-$checkUser ="SELECT *from signup WHERE email ='$email'";
+$checkUser ="SELECT *from adminsignup WHERE email ='$email'";
 $checkQuery = mysqli_query($conn,$checkUser);
 
 if(mysqli_num_rows($checkQuery)>0){
@@ -21,7 +21,7 @@ if(mysqli_num_rows($checkQuery)>0){
 	
 
 } else {
-	$insertQuery = "INSERT INTO signup(first_name, last_name,phone_number,email,password) VALUES ('{$fname}', '{$lname}','{$phonenumber}','{$email}','{$password}')";
+	$insertQuery = "INSERT INTO adminsignup(first_name, last_name,phone_number,email,password) VALUES ('{$fname}', '{$lname}','{$phonenumber}', '{$email}','{$password}')";
 $result = mysqli_query($conn, $insertQuery);
 
 
